@@ -20,7 +20,7 @@
         <p>You have chose to register for the following event:
 
         <h3 data-th-text="${event.eventName}"></h3>
-        <h3 data-th-text="${event.eventDate}"></h3>
+        <h3 data-th-text="${#dates.format(new java.util.Date(event.eventDate), 'dd-MM-yyyy')}"></h3>
         </p>
 
         <form method="POST" data-th-action="@{/events/register/{id}(id=${event.eventId})}"

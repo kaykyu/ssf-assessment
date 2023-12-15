@@ -2,9 +2,7 @@ package vttp.ssf.assessment.eventmanagement.services;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -34,7 +32,7 @@ public class DatabaseService {
                         jObject.getInt("eventId"),
                         jObject.getString("eventName"),
                         jObject.getInt("eventSize"),
-                        msToDate(Long.valueOf(jObject.get("eventDate").toString())),
+                        Long.valueOf(jObject.get("eventDate").toString()),
                         jObject.getInt("participants")));
             }
 
@@ -45,13 +43,5 @@ public class DatabaseService {
         }
 
         return null;
-    }
-    
-    public String msToDate(Long date) {
-
-        Date result = new Date(date);
-
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyy");
-        return sdf.format(result);
     }
 }

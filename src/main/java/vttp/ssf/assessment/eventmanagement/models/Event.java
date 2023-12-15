@@ -7,7 +7,7 @@ public class Event implements Serializable{
     private Integer eventId;
     private String eventName;
     private Integer eventSize;
-    private String eventDate;
+    private Long eventDate;
     private Integer participants;
 
     public Integer getEventId() {
@@ -34,11 +34,11 @@ public class Event implements Serializable{
         this.eventSize = eventSize;
     }
 
-    public String getEventDate() {
+    public Long getEventDate() {
         return eventDate;
     }
 
-    public void setEventDate(String eventDate) {
+    public void setEventDate(Long eventDate) {
         this.eventDate = eventDate;
     }
 
@@ -53,7 +53,7 @@ public class Event implements Serializable{
     public Event() {
     }
 
-    public Event(Integer eventId, String eventName, Integer eventSize, String eventDate, Integer participants) {
+    public Event(Integer eventId, String eventName, Integer eventSize, Long eventDate, Integer participants) {
         this.eventId = eventId;
         this.eventName = eventName;
         this.eventSize = eventSize;

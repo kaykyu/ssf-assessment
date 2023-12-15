@@ -19,7 +19,7 @@
         
         <p>You have successfully registered for the event:</p>
         <h5 data-th-text="${event.eventName}"></h5>
-        <h5 data-th-text="${event.eventDate}"></h5>
+        <h5 data-th-text="${#dates.format(new java.util.Date(event.eventDate), 'dd-MM-yyyy')}"></h5>
 
         <p><a data-th-href="@{/events/listing}">Back to Event Listing</a></p>
     </div>
