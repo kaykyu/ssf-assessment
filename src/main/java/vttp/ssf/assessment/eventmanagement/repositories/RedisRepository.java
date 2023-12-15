@@ -1,12 +1,38 @@
 package vttp.ssf.assessment.eventmanagement.repositories;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.data.redis.core.HashOperations;
+import org.springframework.stereotype.Repository;
+
+import jakarta.annotation.Resource;
+import vttp.ssf.assessment.eventmanagement.models.Event;
+
+@Repository
 public class RedisRepository {
 
-	// TODO: Task 2
+	@Resource(name = "redisEvents")
+	private HashOperations<String, String, Event> eventHashOps;
 
+	public void saveRecord(Event event) {
+		eventHashOps.put("events", event.getEventId().toString(), event);
+	}
 
-	// TODO: Task 3
+	public Integer getNumberOfEvents() {
+		return eventHashOps.entries("events").keySet().size();
+	}
 
+	public Event getEvent(Integer index) {
+		return eventHashOps.get("events", index.toString());
+	}
 
-	// TODO: Task 4
+	public List<Event> getEventsList() {
+
+		List<Event> list = new ArrayList<>();
+		for (int i = 0; i < getNumberOfEvents(); i++) {
+			list.add(eventHashOps.get("events", String.valueOf(i + 1)));
+		}
+		return list;
+	}
 }
